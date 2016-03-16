@@ -1,29 +1,26 @@
 <?php
+namespace USPS;
+
 /**
- * Load required classes
- */
-require_once('USPSBase.php');
-require_once('USPSAddress.php');
-/**
- * USPS Zip code lookup by city/state
- * used to find a zip code by city/state lookup
+ * USPS Address Verify Class
+ * used to verify an address is valid
  * @since 1.0
  * @author Vincent Gabriel
  */
-class USPSZipCodeLookup extends USPSBase {
+class USPSAddressVerify extends USPSBase {
   /**
    * @var string - the api version used for this type of call
    */
-  protected $apiVersion = 'ZipCodeLookup';
+  protected $apiVersion = 'Verify';
   /**
    * @var array - list of all addresses added so far
    */
   protected $addresses = array();
   /**
-   * Perform the API call
+   * Perform the API call to verify the address
    * @return string
    */
-  public function lookup() {
+  public function verify() {
     return $this->doRequest();
   }
   /**
@@ -35,7 +32,7 @@ class USPSZipCodeLookup extends USPSBase {
   }
   /**
    * Add Address to the stack
-   * @param USPSAddress object $data
+   * @param USPSAddress $data
    * @param string $id the address unique id
    * @return void
    */

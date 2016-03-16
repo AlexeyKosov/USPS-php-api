@@ -1,8 +1,5 @@
 <?php
-/**
- * Load required classes
- */
-require_once('USPSBase.php');
+namespace USPS;
 
 /**
  */

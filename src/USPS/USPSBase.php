@@ -1,8 +1,9 @@
 <?php
-/**
- * Load required classes
- */
-require_once('XMLParser.php');
+namespace USPS;
+
+use USPS\Utility\XML\XMLParser;
+use USPS\Utility\XML\XML2Array;
+
 /**
  * USPS Base class
  * used to perform the actual api calls
@@ -33,7 +34,7 @@ class USPSBase {
    */
   protected $response = '';
   /**
-   *  the headers returned from the call made
+   * the headers returned from the call made
    * @var array
    */
   protected $headers = '';
@@ -271,8 +272,8 @@ class USPSBase {
   /**
    * Set the response
    *
-   * @param mixed the response returned from the call
-   * @return facebookLib object
+   * @param mixed $response the response returned from the call
+   * @return $this
    */
   public function setResponse( $response='' ) {
     $this->response = $response;
@@ -289,10 +290,10 @@ class USPSBase {
   /**
    * Set the headers
    *
-   * @param array the headers array
-   * @return facebookLib object
+   * @param array $headers the headers array
+   * @return $this
    */
-  public function setHeaders( $headers='' ) {
+  public function setHeaders( $headers = array() ) {
     $this->headers = $headers;
     return $this;
   }
@@ -307,8 +308,8 @@ class USPSBase {
   /**
    * Set the error code number
    *
-   * @param integer the error code number
-   * @return facebookLib object
+   * @param integer $code the error code number
+   * @return $this
    */
   public function setErrorCode($code=0) {
     $this->errorCode = $code;
@@ -325,8 +326,8 @@ class USPSBase {
   /**
    * Set the error message
    *
-   * @param string the error message
-   * @return facebookLib object
+   * @param string $message the error message
+   * @return $this
    */
   public function setErrorMessage($message='') {
     $this->errorMessage = $message;

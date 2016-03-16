@@ -1,4 +1,6 @@
 <?php
+namespace USPS;
+
 /**
  * USPS Address Class
  * used across other class to create addresses represented as objects
