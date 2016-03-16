@@ -41,6 +41,34 @@ class USPSTrackConfirm extends USPSBase {
   }
 
     /**
+     * Did we encounter an error?
+     * @return boolean
+     */
+    public function isError() {
+        $headers = $this->getHeaders();
+        $response = $this->getArrayResponse();
+        // First make sure we got a valid response
+        if($headers['http_code'] != 200) {
+            return true;
+        }
+
+        // Make sure the response does not have error in it
+        if(isset($response['Error'])) {
+            return true;
+        }
+
+        // Check to see if we have the Error word in the response
+        /*
+        if(strpos($this->getResponse(), '<Error>') !== false) {
+            return true;
+        }
+        */ // This doesn't work as expected since some of tracking numbers can be invalid whereas all others - valid.
+
+        // No error
+        return false;
+    }
+
+    /**
      * @param array $ids
      *
      * @return array
