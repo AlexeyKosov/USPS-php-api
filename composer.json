@@ -1,0 +1,12 @@
+{
+  "name": "AlexeyKosov/USPS-php-api",
+  "description": "Fork of VinceG/USPS-php-api",
+  "minimum-stability": "stable",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Alexey Kosov",
+      "email": "kosov-alexey@yandex.ru"
+    }
+  ]
+}
