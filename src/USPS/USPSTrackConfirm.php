@@ -39,4 +39,27 @@ class USPSTrackConfirm extends USPSBase {
   public function addPackage($id) {
     $this->packages['TrackID'][] = array('@attributes' => array('ID' => $id));
   }
+
+    /**
+     * @param array $ids
+     *
+     * @return array
+     */
+    public function trackPackages(array $ids)
+    {
+        if (count($ids) > 10) {
+            throw new \InvalidArgumentException('The Track/Confirm Web Tool limits the data requested to 10 packages per transaction');
+        }
+
+        $this->packages['TrackID'] = array();
+        foreach ($ids as $id) {
+            $this->addPackage($id);
+        }
+
+        $this->getTracking();
+
+        $response = $this->getArrayResponse();
+
+        return $response;
+    }
 }
